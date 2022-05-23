@@ -3,6 +3,8 @@ import logging
 import numpy as np
 import pandas as pd
 
+from typing import List
+from jobs.pandas_job import PandasJob
 
 logging.basicConfig(
     level=logging.INFO,
@@ -13,8 +15,18 @@ log = logging.getLogger(__name__)
 
 
 def main():
-    log.info("Done")
-    pass
+
+    # Run pipeline
+    job = PandasJob()
+    job.import_dataframes(subdirectory="/input")
+    job.concat_dataframes(pattern=r"_data.*.txt")
+
+    # Bonuses
+    job.merge_material_dataframe()
+    job.filter_low_worth()
+    job.recalculate_true_worth()
+    job.write_datframe()
+    # job.push_to_database()
 
 
 if __name__ == "__main__":
