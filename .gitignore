@@ -131,3 +131,4 @@ dmypy.json
 # Custom Files
 **/output/*
 !**/output/.gitkeep
+!**/input/*
