@@ -48,7 +48,6 @@ class PandasJob:
                     # adding source column
                     df["source"] = file
                     self.dfs[file] = df
-        self.dfs
 
     def concat_dataframes(self, pattern: str) -> pd.DataFrame:
         """Concatenate dataframe from files that match the regex pattern
@@ -72,8 +71,6 @@ class PandasJob:
 
         # TODO: remove debug statement
         # print(self.concat_df.head(10))
-
-        return self.concat_df
 
     def merge_material_dataframe(self):
         """Merge material dataframe to consolidated dataframe."""
@@ -105,14 +102,14 @@ class PandasJob:
 
         self.concat_df = self.concat_df.drop("old_worth", axis=1)
 
-    def write_datframe(self, path="./output/consolidated_output.1.csv"):
+    def write_dataframe(self, path="./output/consolidated_output.1.csv"):
         """Write dataframe to output diretory.
 
         Args:
             path (str, optional): _description_.
                 Defaults to "./output/consolidated_output.1.csv".
         """
-        self.concat_df.to_csv(path)
+        self.concat_df.to_csv(path, index=False)
 
     # TODO: Complete push to database function.
     # def push_to_db(

@@ -1,10 +1,10 @@
 import logging
-
 import numpy as np
 import pandas as pd
 
-from typing import List
 from jobs.pandas_job import PandasJob
+from typing import List
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -25,7 +25,7 @@ def main():
     job.merge_material_dataframe()
     job.filter_low_worth()
     job.recalculate_true_worth()
-    job.write_datframe()
+    job.write_dataframe()
     # job.push_to_database()
 
 
